@@ -1,0 +1,7 @@
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #090e19; }
+body { font-family: 'Segoe UI', Arial, sans-serif; }
+#game { width: 100%; height: 100%; display: grid; place-items: center; }
+canvas { display: block; touch-action: none; outline: none; }
+#loading { position: fixed; inset: 0; display: grid; place-content: center; gap: 16px; color: #a7f3cb; font-size: 22px; letter-spacing: 5px; text-align: center; background: #0b101d; }
+#loading span { color: #78869f; font-size: 12px; letter-spacing: 1px; }

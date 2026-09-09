@@ -1,0 +1,9 @@
+:root { color-scheme: dark; font-family: 'Segoe UI', sans-serif; background: #090f1c; }
+* { box-sizing: border-box; }
+html, body, #app { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { overscroll-behavior: none; }
+#app { display: grid; place-items: center; }
+canvas { display: block; touch-action: none; outline: none; }
+#loading { position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 18px; background: #090f1c; color: #8ef5cf; letter-spacing: 12px; font-size: 36px; font-weight: 700; }
+#loading span { font-size: 12px; letter-spacing: 2px; color: #7c91aa; font-weight: 400; }
+noscript { position: fixed; inset: 45% 0; text-align: center; color: white; }

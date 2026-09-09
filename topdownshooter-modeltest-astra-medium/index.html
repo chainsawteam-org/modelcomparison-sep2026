@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#10191c" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23152229'/%3E%3Cpath d='M12 10h18v5H17v4h10v4H17v3h13v5H12z' fill='%23f38b54'/%3E%3C/svg%3E"
+    />
+    <title>EMBER / Relay Zero</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+      <div id="vignette"></div>
+      <header>
+        <div class="brand">
+          E<span> / </span>RZ <small>EMBER SYSTEMS</small>
+        </div>
+        <div id="mission">
+          RELAY ZERO <span> // </span> CONTAINMENT PROTOCOL
+        </div>
+        <button id="sound" aria-label="Toggle sound">SOUND ON</button>
+      </header>
+      <div id="hud" hidden>
+        <div class="topstats">
+          <div class="sector">ENCOUNTER <strong id="wave">01 / 06</strong></div>
+          <div class="objective">
+            <span id="objective">CLEAR THE SIGNAL</span>
+            <div class="track"><i id="progress"></i></div>
+          </div>
+          <div class="score">
+            <small>SCORE</small><strong id="score">000000</strong
+            ><span id="combo"></span>
+          </div>
+        </div>
+        <div id="notice"></div>
+        <div id="boss" hidden>
+          WARDEN // CORE INTEGRITY
+          <div class="track"><i id="bossbar"></i></div>
+        </div>
+        <footer>
+          <div class="vitals">
+            <small>OPERATOR INTEGRITY</small>
+            <div class="healthtrack"><i id="healthbar"></i></div>
+            <strong id="health">100</strong>
+          </div>
+          <div class="weapon">
+            <small id="weapon">01 / PULSE RIFLE</small
+            ><strong id="ammo">24 <em>/ ∞</em></strong
+            ><span id="reload"></span>
+          </div>
+          <div class="ability">
+            <small>SHIFT / DASH</small>
+            <div class="track"><i id="dashbar"></i></div>
+          </div>
+          <div class="ability">
+            <small>SPACE / DISCHARGE</small>
+            <div class="track"><i id="energybar"></i></div>
+          </div>
+          <div class="hints">
+            1 2 <span>WEAPON</span> R <span>RELOAD</span><br />ESC
+            <span>PAUSE</span>
+          </div>
+        </footer>
+      </div>
+      <div id="overlay"></div>
+      <div id="crosshair"><i></i><b></b></div>
+      <div id="damage"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

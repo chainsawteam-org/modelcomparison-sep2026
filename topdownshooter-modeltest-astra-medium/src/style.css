@@ -1,0 +1,486 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #10191c;
+  color: #e9eee7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+#vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 130px #050c1280;
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+.brand {
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -1px;
+}
+.brand span {
+  color: #fa8750;
+}
+.brand small {
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-left: 15px;
+  color: #91a1a2;
+}
+#mission {
+  color: #9badaf;
+}
+#mission span {
+  color: #ff8750;
+  padding: 0 12px;
+}
+#sound {
+  pointer-events: auto;
+  color: #a4b4b4;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  border: 1px solid #64777850;
+  background: #15212599;
+  padding: 10px 14px;
+}
+#hud[hidden] {
+  display: none;
+}
+.topstats {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  top: 88px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.sector {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a7b9b8;
+}
+.sector strong {
+  display: block;
+  font-size: 29px;
+  letter-spacing: -1px;
+  color: #fff;
+  margin-top: 7px;
+}
+.objective {
+  text-align: center;
+  width: 230px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #d4d8cb;
+}
+.track {
+  height: 3px;
+  background: #8aada627;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.track i {
+  display: block;
+  height: 100%;
+  background: #ef8a51;
+  width: 0;
+  transition: width 0.12s;
+}
+.score {
+  text-align: right;
+  min-width: 120px;
+}
+.score small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a7b9b8;
+}
+.score strong {
+  font-size: 25px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+.score span {
+  display: block;
+  color: #ffa065;
+  font-size: 10px;
+  height: 15px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  padding: 25px 34px;
+  background: linear-gradient(transparent, #0b151cef);
+  pointer-events: none;
+}
+footer small {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #b5c6c3;
+  display: block;
+}
+.vitals {
+  width: 190px;
+  position: relative;
+  padding-right: 40px;
+}
+.healthtrack {
+  height: 7px;
+  background: #53636755;
+  margin-top: 12px;
+}
+.healthtrack i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #a6e4c4;
+  transition: width 0.15s;
+}
+.vitals strong {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  font-size: 21px;
+  font-weight: 400;
+}
+.weapon {
+  min-width: 140px;
+}
+.weapon strong {
+  font-size: 28px;
+  font-weight: 400;
+  display: block;
+  margin-top: 3px;
+}
+.weapon em {
+  font-size: 14px;
+  color: #6f868a;
+  font-style: normal;
+}
+.weapon span {
+  position: absolute;
+  font-size: 8px;
+  color: #ff9b59;
+  letter-spacing: 1px;
+}
+.ability {
+  width: 135px;
+}
+.ability .track {
+  height: 5px;
+}
+.hints {
+  margin-left: auto;
+  font-size: 9px;
+  color: #dfdac9;
+  line-height: 23px;
+  word-spacing: 5px;
+}
+.hints span {
+  color: #789293;
+  word-spacing: 0;
+  font-size: 8px;
+  margin-right: 9px;
+}
+#notice {
+  position: absolute;
+  top: 23%;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: #f0c8a4;
+  text-shadow: 0 2px 10px #000;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#boss {
+  position: absolute;
+  width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 110px;
+  text-align: center;
+  color: #f69c72;
+  letter-spacing: 3px;
+  font-size: 9px;
+}
+#boss .track {
+  height: 5px;
+}
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    #08131be8 0%,
+    #0a1820c9 42%,
+    #08151a40 100%
+  );
+}
+#overlay:empty {
+  display: none;
+}
+.menu {
+  width: min(1000px, 90vw);
+  position: relative;
+}
+.eyebrow {
+  font-size: 10px;
+  color: #ee9a66;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+.menu h1 {
+  font-size: clamp(70px, 10vw, 136px);
+  line-height: 0.84;
+  letter-spacing: -8px;
+  margin: 0;
+  font-weight: 900;
+}
+.menu h1 span {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px #92a7a5;
+  font-size: 0.53em;
+  letter-spacing: 9px;
+  margin-top: 18px;
+}
+.menu p {
+  max-width: 420px;
+  color: #a3b6b8;
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 28px 0;
+}
+.primary {
+  border: 0;
+  background: #f38b54;
+  color: #142126;
+  padding: 18px 27px;
+  min-width: 225px;
+  text-align: left;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+.primary:hover {
+  background: #ffb780;
+  transform: translateY(-2px);
+}
+.primary span {
+  float: right;
+  margin-left: 40px;
+}
+.controls {
+  display: flex;
+  gap: 27px;
+  margin-top: 38px;
+  font-size: 9px;
+  color: #89a0a2;
+  letter-spacing: 1px;
+}
+.controls b {
+  display: block;
+  color: #d5dfd8;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 9px;
+}
+.menu .meta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+  font: 9px/2 monospace;
+  color: #8ca3a5;
+  letter-spacing: 2px;
+}
+.menu .meta strong {
+  color: #e89b6c;
+}
+.panel {
+  width: min(900px, 90vw);
+}
+.panel h2 {
+  font-size: 46px;
+  margin: 10px 0;
+  letter-spacing: -2px;
+}
+.panel p {
+  color: #9db1b2;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.cards {
+  display: flex;
+  gap: 16px;
+  margin: 30px 0;
+}
+.card {
+  flex: 1;
+  text-align: left;
+  padding: 27px 24px;
+  background: #16282ded;
+  border: 1px solid #506366;
+  color: #e3ebe3;
+  min-height: 210px;
+  transition: 0.18s;
+}
+.card:hover {
+  border-color: #f59c64;
+  background: #243638;
+  transform: translateY(-4px);
+}
+.card small {
+  color: #ee9a66;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.card h3 {
+  font-size: 23px;
+  margin: 25px 0 12px;
+}
+.card p {
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.8;
+}
+.resultstats {
+  display: flex;
+  gap: 55px;
+  margin: 30px 0;
+}
+.resultstats small {
+  display: block;
+  color: #93aaae;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+.resultstats strong {
+  font-size: 35px;
+  line-height: 1.8;
+}
+#crosshair {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #d8f0ddaa;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+#crosshair i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff2d3;
+  left: 8px;
+  top: 8px;
+  border-radius: 50%;
+}
+#crosshair b {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid #ff9f6b;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+#damage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 100px #ff4422;
+  opacity: 0;
+}
+body.playing canvas {
+  cursor: none;
+}
+@media (max-width: 850px) {
+  header {
+    padding: 18px;
+  }
+  #mission {
+    display: none;
+  }
+  .topstats {
+    left: 18px;
+    right: 18px;
+    top: 70px;
+  }
+  footer {
+    padding: 20px 18px;
+    gap: 18px;
+  }
+  .hints {
+    display: none;
+  }
+  .ability {
+    width: 100px;
+  }
+  .vitals {
+    width: 155px;
+  }
+  .menu .meta {
+    display: none;
+  }
+  .menu h1 {
+    letter-spacing: -4px;
+  }
+  .controls {
+    gap: 15px;
+  }
+  .cards {
+    gap: 8px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .card h3 {
+    font-size: 19px;
+  }
+}
